@@ -2,10 +2,15 @@
 export default {
   content: [
     "./index.html",
-    "./src/**/*.{js,ts,jsx,tsx}",
+    "./src/**/*.jsx",
   ],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        'lora': ['Lora', 'serif'],
+        'nunito': ['Nunito', 'sans-serif'],
+      },
+    },
   },
   plugins: [],
 }

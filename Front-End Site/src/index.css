@@ -1,3 +1,19 @@
 @tailwind base;
 @tailwind components;
+html {
+  scroll-behavior: smooth;
+}
+/* @import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap'); */
 @tailwind utilities;
+
+.bg-gradient {
+  background: linear-gradient(180deg, rgba(77, 83, 255, 0%) 0%, rgba(77, 83, 255, 2%) 100%);
+}
+
+.slick-slide {
+  width: 150px !important;
+}
+
+.slick-slider .slick-arrow {
+  display: none !important;
+}

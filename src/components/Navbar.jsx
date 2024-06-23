@@ -38,8 +38,8 @@ const Navbar = () => {
 
   return (
     
-        <header className= {`container mx-auto bg-[rgba(255,255,255,0.5)] transition-shadow duration-300 backdrop-blur-custom-blur sticky top-0  ${hasShadow ? 'shadow-custom-1'  : ''}`}>
-            <nav className="flex items-center justify-between p-6 lg:px-8" aria-label="Global">
+        <header className= {` bg-[rgba(255,255,255,0.5)] transition-shadow duration-300 backdrop-blur-custom-blur sticky top-0  ${hasShadow ? 'shadow-custom-1'  : ''}`}>
+            <nav className="lg:container lg:mx-auto flex items-center justify-between p-6 lg:px-8" aria-label="Global">
             <div className="flex lg:flex-1">
                 <a href="#" className="-m-1.5 p-1.5">
                 <span className="sr-only"> Company Logo</span>
@@ -72,7 +72,7 @@ const Navbar = () => {
                 <a href="#login" className="text-sm font-semibold leading-6 text-gray-900 hover:text-indigo-600">
                 Log in 
                 </a>
-                <a href="#sign up" className="text-sm font-semibold  text-indigo-600 px-3 py-2 outline outline-1 outline-indigo-600 rounded-md bg-white hover:bg-indigo-600 hover:text-white hover:outline-none ">
+                <a href="#sign up" className="text-sm font-semibold  text-indigo-600 px-3 py-2 outline outline-1 outline-indigo-600 rounded-md  hover:bg-indigo-600 hover:text-white hover:outline-none ">
                 Sign Up 
                 </a>
                 { <LanguageButton /> }

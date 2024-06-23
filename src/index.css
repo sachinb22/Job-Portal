@@ -5,6 +5,9 @@
 html {
   scroll-behavior: smooth;
 }
+body {
+  font-family: 'Nunito', sans-serif;
+}
 .bg-gradient {
   background: linear-gradient(180deg, rgba(77, 83, 255, 0%) 0%, rgba(77, 83, 255, 2%) 100%);
 }

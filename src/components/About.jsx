@@ -4,7 +4,7 @@ import about from '../assets/about.png'
 
 const About = () => {
   return (
-    <div className='mb-10'>
+    <div className=''>
       <section className='container mx-auto pt-14 lg:px-8'>
         <div className="grid md:grid-cols-2 place-items-center">
           <div className="mx-auto w-[300px] h-auto">

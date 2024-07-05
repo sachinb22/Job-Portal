@@ -38,7 +38,7 @@ const Navbar = () => {
 
   return (
     
-        <header className= {` bg-[rgba(255,255,255,0.5)] transition-shadow duration-300 backdrop-blur-custom-blur sticky top-0  ${hasShadow ? 'shadow-custom-1'  : ''}`}>
+        <header className= {` bg-[rgba(255,255,255,0.5)] transition-shadow duration-300 backdrop-blur-custom-blur sticky top-0 z-10 ${hasShadow ? 'shadow-custom-1'  : ''}`}>
             <nav className="lg:container lg:mx-auto flex items-center justify-between p-6 lg:px-8" aria-label="Global">
             <div className="flex lg:flex-1">
                 <a href="#" className="-m-1.5 p-1.5">

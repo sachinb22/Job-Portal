@@ -4,8 +4,8 @@ import Logo from '../assets/Logo.png'
 const Footer = () => {
   return (
     <div>
-        <footer className="bg-zinc-50 text-center text-surface/75 dark:bg-black dark:text-white/75 lg:text-left">
-            <div className="mx-6 py-10 text-center md:text-left border-b-2 border-neutral-200 p-6 dark:border-white/10">
+        <footer className="  dark:bg-black dark:text-white/75 ">
+            <div className="lg:container lg:mx-auto mx-6 py-10 text-center md:text-left border-b-2 border-neutral-200 p-6 dark:border-white/10">
                 <div className="grid-1 grid gap-8 md:grid-cols-2 lg:grid-cols-4">
                 
                 <div className="">

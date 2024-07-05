@@ -6,6 +6,7 @@ import About from './components/About'
 import Blog from './components/Blog'
 import Footer from './components/Footer'
 import Testimonials from './components/Testimonials'
+import NewsLetter from './components/NewsLetter'
 
 function App() {
   
@@ -18,6 +19,7 @@ function App() {
       <About />
       <Blog />
       <Testimonials />
+      <NewsLetter />
       <Footer />
     </>
   )

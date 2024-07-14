@@ -3,12 +3,13 @@ import { Dialog, DialogPanel } from '@headlessui/react'
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
 import Logo from '../assets/Logo.png'
 import LanguageButton from './LanguageButton'
+import { Link, NavLink } from 'react-router-dom'
 
 
 const navigation = [
-    { name: 'Home', href: '#home' },
-    { name: 'Browse Jobs', href: '#jobs' },
-    { name: 'Featured Employers', href: '#featured' },
+    { name: 'Home', href: '/' },
+    { name: 'Browse Jobs', href: '/browsejobs' },
+    { name: 'Featured Employers', href: '/featuredemployers' },
     
   ]
 
@@ -63,18 +64,22 @@ const Navbar = () => {
             </div>
             <div className="hidden lg:flex lg:gap-x-12 ">
                 {navigation.map((item) => (
-                <a key={item.name} href={item.href} className="text-sm font-semibold leading-6 text-gray-900 hover:text-indigo-600">
+                <NavLink key={item.name} to={item.href} className={({ isActive }) => 
+                    `text-sm font-semibold leading-6 text-gray-900 hover:text-indigo-600 ${isActive ? 'text-indigo-600' : ''}`
+                  }>
                     {item.name}
-                </a>
+                </NavLink>
                 ))}
             </div>
             <div className="hidden lg:flex lg:items-center lg:flex-1 lg:gap-x-4 lg:justify-end">
-                <a href="#login" className="text-sm font-semibold leading-6 text-gray-900 hover:text-indigo-600">
+                <NavLink to="/login"    className={({ isActive }) => 
+                `text-sm font-semibold leading-6 text-gray-900 hover:text-indigo-600 ${isActive ? 'text-indigo-600' : ''}`
+                }>
                 Log in 
-                </a>
-                <a href="#sign up" className="text-sm font-semibold  text-indigo-600 px-3 py-2 outline outline-1 outline-indigo-600 rounded-md  hover:bg-indigo-600 hover:text-white hover:outline-none ">
+                </NavLink>
+                <NavLink to="/signup" className= { ({isActive}) => `text-sm font-semibold  text-indigo-600 px-3 py-2 outline outline-1 outline-indigo-600 rounded-md  hover:bg-indigo-600 hover:text-white hover:outline-none ${isActive ? 'bg-indigo-600 text-white' : ''}`}>
                 Sign Up 
-                </a>
+                </NavLink>
                 { <LanguageButton /> }
             </div>
             </nav>

@@ -1,26 +1,32 @@
 import './App.css'
+import Home from './Pages/Home'
+import Login from './Pages/Login'
+import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import Navbar from './components/Navbar'
-import HeroSection from './components/HeroSection'
-import JobList from './components/JobList'
-import About from './components/About'
-import Blog from './components/Blog'
+import SignUp from './Pages/SignUp'
 import Footer from './components/Footer'
-import Testimonials from './components/Testimonials'
-import NewsLetter from './components/NewsLetter'
 
 function App() {
   
+  const router = createBrowserRouter([
+    {
+      path: '/',
+      element: <Home />
+    },
+    {
+      path: '/login',
+      element: <><Navbar/><Login /> <Footer/></>
+    },
+    {
+      path: '/signup',
+      element: <><Navbar/><SignUp /><Footer/></>
+    },
+  ])
 
   return (
     <>
-      <Navbar />
-      <HeroSection/>
-      <JobList />
-      <About />
-      <Blog />
-      <Testimonials />
-      <NewsLetter />
-      <Footer />
+      <RouterProvider router={router} />
+
     </>
   )
 }

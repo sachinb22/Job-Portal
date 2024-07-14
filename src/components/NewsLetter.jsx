@@ -5,7 +5,7 @@ import newsletter from '../assets/newsletter.png'
 const NewsLetter = () => {
   return (
     <div>
-        <section className="lg:container lg:mx-auto dark:bg-indigo-100 rounded">
+        <section className="lg:container lg:mx-auto dark:bg-indigo-100 rounded ">
         <div className="my-16 p-8 lg:p-16 grid lg:grid-cols-2 gap-8">
             <div className="sm:text-left text-center">
             <p className='text-base uppercase font-nunito text-indigo-600 relative'>

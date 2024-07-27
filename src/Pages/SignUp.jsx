@@ -1,5 +1,11 @@
 import React from 'react'
 import TextField from '@mui/material/TextField';
+import MenuItem from '@mui/material/MenuItem';
+import FormControlLabel from '@mui/material/FormControlLabel';
+import Checkbox from '@mui/material/Checkbox';
+import Button from '@mui/material/Button';
+import { Link} from 'react-router-dom'
+
 
 
 const SignUp = () => {
@@ -26,6 +32,18 @@ const SignUp = () => {
           label="First Name"
           autoFocus
         />
+        <TextField id="select" label="Profession" value="" select>
+          <MenuItem value="10">Ten</MenuItem>
+          <MenuItem value="20">Twenty</MenuItem>
+        </TextField>
+        <TextField id="select" label="Speciality" value="" select>
+          <MenuItem value="10">Ten</MenuItem>
+          <MenuItem value="20">Twenty</MenuItem>
+        </TextField>
+        <TextField id="select" label="Country" value="" select>
+          <MenuItem value="10">Ten</MenuItem>
+          <MenuItem value="20">Twenty</MenuItem>
+        </TextField>
         <TextField
           autoComplete="city"
           name="cityName"
@@ -80,6 +98,29 @@ const SignUp = () => {
           autoComplete="new-password"
         />
         </div>
+        <div className="flex flex-col mt-8">
+
+        <FormControlLabel
+              control={<Checkbox value="remember" color="primary" />}
+              label="I agree to the terms of use and privacy policy."
+        />
+        <FormControlLabel
+              control={<Checkbox value="remember" color="primary" />}
+              label="Subscribe me to the Sairaanhoitajat.com newsletter."
+        />
+        </div>
+
+        <Button
+              type="submit"
+              fullWidth
+              variant="contained"
+              className="!bg-indigo-600 hover:!bg-indigo-700 !my-10 !p-4 w-full lg:!w-1/4 !flex !mx-auto"
+              >
+              Create Account
+        </Button>
+        
+        <Link to= "/login"><p className='text-center'>Already have an account?  <span className='text-indigo-500 underline'>Login.</span></p></Link>
+
       </form>
       </section>
     </>

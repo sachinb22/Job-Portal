@@ -5,6 +5,7 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import Navbar from './components/Navbar'
 import SignUp from './Pages/SignUp'
 import Footer from './components/Footer'
+import UserDashboard from './Pages/UserDashboard'
 
 function App() {
   
@@ -20,6 +21,10 @@ function App() {
     {
       path: '/signup',
       element: <><Navbar/><SignUp /><Footer/></>
+    },
+    {
+      path: '/dashboard',
+      element: <><Navbar/><UserDashboard /><Footer/></>
     },
   ])
 

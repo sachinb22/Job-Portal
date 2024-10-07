@@ -1,19 +1,46 @@
 @tailwind base;
 @tailwind components;
+@tailwind utilities;
+
 html {
   scroll-behavior: smooth;
 }
-/* @import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap'); */
-@tailwind utilities;
-
+body {
+  font-family: 'Nunito', sans-serif;
+}
 .bg-gradient {
   background: linear-gradient(180deg, rgba(77, 83, 255, 0%) 0%, rgba(77, 83, 255, 2%) 100%);
 }
+.hero .slick-slider {
+  max-width: 350px !important;
+  margin-top: 10px;
+}
+.hero .slick-arrow {
+  display: none !important;
+}
+.hero .slick-dots {
+  display:  none !important;
+}
 
-.slick-slide {
+/* .slick-slide {
   width: 150px !important;
 }
 
 .slick-slider .slick-arrow {
   display: none !important;
+} */
+
+.testimonials .slick-track {
+  padding: 15px !important;
+  display: flex;
+  gap: 12px;
+}
+
+.testimonials .slick-prev:before, .slick-next:before {
+  color: #4D53FF !important;
+}
+@media (max-width: 700px) {
+  .slick-arrow {
+    display: none !important;
+  }
 }

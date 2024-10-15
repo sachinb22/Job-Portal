@@ -36,11 +36,19 @@ body {
   gap: 12px;
 }
 
-.testimonials .slick-prev:before, .slick-next:before {
+.slick-prev:before, .slick-next:before {
   color: #4D53FF !important;
 }
 @media (max-width: 700px) {
   .slick-arrow {
     display: none !important;
   }
+}
+
+.browseJobs .slick-slider {
+  width: 50% !important;
+  margin: auto;
+}
+.browseJobs .slider .slick-list {
+padding-bottom: 8px;
 }

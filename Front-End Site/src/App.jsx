@@ -6,6 +6,10 @@ import Navbar from './components/Navbar'
 import SignUp from './Pages/SignUp'
 import Footer from './components/Footer'
 import UserDashboard from './Pages/UserDashboard'
+import BrowseJobs from './Pages/BrowseJobs'
+import FeaturedEmployers from './Pages/FeaturedEmployers'
+import Profile from './components/Profile'
+import JobDescription from './components/JobDescription'
 
 function App() {
   
@@ -13,6 +17,14 @@ function App() {
     {
       path: '/',
       element: <Home />
+    },
+    {
+      path: '/browsejobs',
+      element: <BrowseJobs />
+    },
+    {
+      path: '/featuredemployers',
+      element: <FeaturedEmployers />
     },
     {
       path: '/login',
@@ -25,6 +37,14 @@ function App() {
     {
       path: '/dashboard',
       element: <><Navbar/><UserDashboard /><Footer/></>
+    },
+    {
+      path: '/description/:id',
+      element: <><Navbar/><JobDescription /><Footer/></>
+    },
+    {
+      path: '/profile',
+      element: <><Navbar/><Profile /><Footer/></>
     },
   ])
 

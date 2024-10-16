@@ -5,7 +5,7 @@ const JobDescription = () => {
     const isApplied = true
 
     return (
-        <div className='container mx-auto pt-10 px-8'>
+        <div className='container mx-auto pt-10 pb-10 px-8'>
 
             <div className="flex justify-between">
                 <h1 className='font-bold text-xl'>Title</h1>
@@ -41,7 +41,16 @@ const JobDescription = () => {
             </div>
             <p className="desc text-sm">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Temporibus nemo, eveniet commodi ratione quaerat animi, quos deserunt aliquam culpa explicabo consequuntur tenetur aliquid distinctio placeat quod, suscipit iusto delectus facilis.</p>
 
-            <h2 className='border-b-2 border-b-gray-300 font-medium py-4'>Job Description</h2>
+            <h2 className='border-b-2 border-b-gray-300 font-bold text-lg py-4'>Job Description</h2>
+            <div className='pt-3'>
+                <p className='font-semibold text-base'>Role: <span className='text-base font-medium ml-3'>Registered Nurse</span></p>
+                <p className='font-semibold text-base'>Location: <span className='text-base font-medium ml-3'>Registered Nurse</span></p>
+                <p className='font-semibold text-base'>Description: <span className='text-base font-medium ml-3'>Registered Nurse</span></p>
+                <p className='font-semibold text-base'>Experience: <span className='text-base font-medium ml-3'>Registered Nurse</span></p>
+                <p className='font-semibold text-base'>Salary: <span className='text-base font-medium ml-3'>Registered Nurse</span></p>
+                <p className='font-semibold text-base'>Total Applicants: <span className='text-base font-medium ml-3'>Registered Nurse</span></p>
+            </div>
+
 
         </div>
     )

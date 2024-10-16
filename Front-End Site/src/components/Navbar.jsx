@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { Dialog, DialogPanel } from '@headlessui/react'
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
 import Logo from '../assets/Logo.png'
@@ -21,7 +21,11 @@ const Navbar = () => {
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
     const [hasShadow, setHasShadow] = useState(false);
 
+    const { user } = useSelector(store => store.auth)
+
+
     const [showProfile, setShowProfile] = useState(false)
+    const profileRef = useRef(null)
 
     useEffect(() => {
         const handleScroll = () => {
@@ -40,11 +44,27 @@ const Navbar = () => {
         };
     }, []);
 
-    const { user } = useSelector(store => store.auth)
 
     const handleProfile = () => {
         setShowProfile(!showProfile)
     }
+
+    // This useEffect will handle clicks outside the profile dropdown
+    useEffect(()=>{
+        const handleClickOutside = (e) => {
+            if(profileRef.current  && !profileRef.current.contains(e.target)){
+                setShowProfile(false)
+            }
+        }
+        // Add event listener when showProfile is true
+        if (showProfile) {
+            document.addEventListener('mousedown', handleClickOutside)
+        }
+        // Cleanup event listener
+        return () => {
+            document.removeEventListener('mousedown', handleClickOutside)
+        }
+    }, [showProfile])
 
     return (
 
@@ -94,20 +114,20 @@ const Navbar = () => {
                             {/* { <LanguageButton /> } */}
                         </div>
                     ) : (
-                        <div className='lg:flex lg:items-center lg:flex-1 lg:gap-x-4 lg:justify-end '>
+                        <div className='lg:flex lg:items-center lg:flex-1 lg:gap-x-4 lg:justify-end ' ref={profileRef}>
                             <img src="https://images.unsplash.com/photo-1633332755192-727a05c4013d?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OHx8YXZhdGFyfGVufDB8fDB8fHww" alt="Profile Image" className='w-8 h-8 rounded relative cursor-pointer' onClick={handleProfile} />
 
                             {showProfile && (<div className='flex flex-col gap-4 border p-4 rounded bg-white shadow-md absolute top-20'>
 
                                 <Link className='flex gap-3' to="/profile">
-                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" className="size-6">
-                                        <path stroke-linecap="round" stroke-linejoin="round" d="M17.982 18.725A7.488 7.488 0 0 0 12 15.75a7.488 7.488 0 0 0-5.982 2.975m11.963 0a9 9 0 1 0-11.963 0m11.963 0A8.966 8.966 0 0 1 12 21a8.966 8.966 0 0 1-5.982-2.275M15 9.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="size-6">
+                                        <path strokeLinecap="round" strokeLinejoin="round" d="M17.982 18.725A7.488 7.488 0 0 0 12 15.75a7.488 7.488 0 0 0-5.982 2.975m11.963 0a9 9 0 1 0-11.963 0m11.963 0A8.966 8.966 0 0 1 12 21a8.966 8.966 0 0 1-5.982-2.275M15 9.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
                                     </svg>
 
                                     View Profile</Link>
                                 <Link className='flex gap-3'>
-                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" className="size-6">
-                                        <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 9V5.25A2.25 2.25 0 0 1 10.5 3h6a2.25 2.25 0 0 1 2.25 2.25v13.5A2.25 2.25 0 0 1 16.5 21h-6a2.25 2.25 0 0 1-2.25-2.25V15m-3 0-3-3m0 0 3-3m-3 3H15" />
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="size-6">
+                                        <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 9V5.25A2.25 2.25 0 0 1 10.5 3h6a2.25 2.25 0 0 1 2.25 2.25v13.5A2.25 2.25 0 0 1 16.5 21h-6a2.25 2.25 0 0 1-2.25-2.25V15m-3 0-3-3m0 0 3-3m-3 3H15" />
                                     </svg>
                                     Logout</Link>
 
@@ -154,18 +174,18 @@ const Navbar = () => {
                                 ))}
                             </div>
                             <div className="py-6">
-                                <a
-                                    href="#"
+                                <Link
+                                    to="/login"
                                     className="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
                                 >
                                     Log in
-                                </a>
-                                <a
-                                    href="#"
+                                </Link>
+                                <Link
+                                    to="/signup"
                                     className="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
                                 >
                                     Sign Up
-                                </a>
+                                </Link>
                             </div>
                         </div>
                     </div>

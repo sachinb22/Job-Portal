@@ -1,6 +1,8 @@
 import { User } from "../models/user.model.js";
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
+import getDataUri from "../utils/datauri.js";
+import cloudinary from "../utils/cloudinary.js";
 
 export const register = async (req, res) => {
   try {
@@ -125,8 +127,12 @@ export const updateProfile = async (req,res) => {
         const {fullName, email, phoneNumber, bio, skills} = req.body
         const file = req.file
         
-
         // cloudinary comes here
+        const fileUri = getDataUri(file)
+        const cloudResponse = await cloudinary.uploader.upload(fileUri.content)
+
+
+
         let skillsArray;
         if(skills) {
             skillsArray = skills.split(",")
@@ -148,6 +154,11 @@ export const updateProfile = async (req,res) => {
         if(phoneNumber) user.phoneNumber = phoneNumber
         if(bio) user.profile.bio = bio
         if(skills) user.profile.skills = skillsArray
+
+        if(cloudResponse) {
+          user.profile.resume = cloudResponse.secure_url  // save the cloudinary url
+          user.profile.resumeOriginalName = file.originalname // save the file original name
+        }
 
         await user.save();
 

@@ -197,7 +197,7 @@ const UpdateProfileDailogue = ({ open, setOpen }) => {
                     <DialogActions>
                         {
                             loading ? (
-                                <Button variant="contained" disabled>
+                                <Button variant="contained" className="!bg-indigo-600 hover:!bg-indigo-700 !p-4 w-full lg:!w-1/3 !flex !mx-auto" >
                                     <CircularProgress size={24} sx={{ color: '#fff' }} />
                                     Please wait
                                 </Button>

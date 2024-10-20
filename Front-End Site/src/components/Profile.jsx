@@ -50,20 +50,20 @@ const Profile = () => {
                         <h3>Skills</h3>
                         <div className='flex justify-between'>
                             {
-                                user?.profile?.skills.length != 0 ?
+                                    user?.profile?.skills && Array.isArray(user?.profile?.skills) && user?.profile?.skills.length > 0 ? (
                                     user?.profile?.skills.map((item, index) => {
                                         return (
-
-
-                                            <Chip key={index} label={item.replace(/['"]+/g, '')} />
-
+                                            <Chip key={index} label={item.replace(/['"]+/g, '')} /> // Removing extra quotes from skill label if any
                                         )
-                                    }) : <span> NA</span>
+                                    })
+                                ) : (
+                                    <span>NA</span>
+                                )
                             }
                         </div>
 
                         <h3>Resume</h3>
-                        {isResume ? <a href='https://sachinbasnet.framer.ai/' target='blank'> {user?.profile?.resume}</a> : <span> NA</span>}
+                        {isResume ? <a href={user?.profile?.resume} target='blank'> {user?.profile?.resumeOriginalName}</a> : <span> NA</span>}
                     </div>
 
                     <div className="border">

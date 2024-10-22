@@ -1,9 +1,13 @@
 import React from 'react'
 import Job from './Job'
+import { useSelector } from 'react-redux';
+import store from '../redux/store';
 
-const randomJobs = [1, 2, 3, 4, 5, 6, 7, 8];
+
 
 const JobList = () => {
+  const {allJobs} = useSelector(store => store.job)
+  console.log(allJobs)
   return (
     <>
       <section className='container mx-auto pt-14 px-8'>
@@ -13,8 +17,8 @@ const JobList = () => {
         </div>
         <div className='grid lg:grid-cols-3 grid-cols-1 gap-6 mt-6'>
           {
-            randomJobs.slice(0, 6).map((item, index) =>
-              <Job key={index}/>
+            allJobs.length <=0 ? <span>No job available.</span> : allJobs.slice(0, 6).map((job) =>
+              <Job key={job._id} job={job}/>
             )
           }
 

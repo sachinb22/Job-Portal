@@ -7,8 +7,10 @@ import Testimonials from '../components/Testimonials'
 import NewsLetter from '../components/NewsLetter'
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
+import useGetAllJobs from '../hooks/useGetAllJobs'
 
 const Home = () => {
+  useGetAllJobs()
   return (
     <>
         <Navbar />

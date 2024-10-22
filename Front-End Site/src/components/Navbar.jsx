@@ -3,9 +3,13 @@ import { Dialog, DialogPanel } from '@headlessui/react'
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
 import Logo from '../assets/Logo.png'
 import LanguageButton from './LanguageButton'
-import { Link, NavLink } from 'react-router-dom'
-import { useSelector } from 'react-redux'
+import { Link, NavLink, useNavigate } from 'react-router-dom'
+import { useDispatch, useSelector } from 'react-redux'
 import store from '../redux/store'
+import { toast } from 'react-toastify'
+import { USER_API_END_POINT } from '../utils/constant'
+import { setUser } from '../redux/authSlice'
+import axios from 'axios'
 
 
 const navigation = [
@@ -22,6 +26,8 @@ const Navbar = () => {
     const [hasShadow, setHasShadow] = useState(false);
 
     const { user } = useSelector(store => store.auth)
+    const dispatch = useDispatch()
+    const navigate = useNavigate()
 
 
     const [showProfile, setShowProfile] = useState(false)
@@ -65,6 +71,34 @@ const Navbar = () => {
             document.removeEventListener('mousedown', handleClickOutside)
         }
     }, [showProfile])
+
+    const logoutHandler = async () => {
+        try {
+            // Make sure the API endpoint is correct
+            const res = await axios.get(`${USER_API_END_POINT}/logout`, { withCredentials: true });
+            
+            // Check if response and res.data exist
+            if (res && res.data && res.data.success) {
+                dispatch(setUser(null));  // Log out the user
+                navigate("/");  // Redirect to home page
+                toast.success(res.data.message);  // Show success message
+            } else {
+                // Handle cases where the response structure is not as expected
+                console.log("Unexpected response structure:", res);
+                toast.error("Unexpected error occurred during logout.");
+            }
+        } catch (error) {
+            console.error("Logout error:", error);
+    
+            // Check if error response and message exist before accessing them
+            if (error.response && error.response.data && error.response.data.message) {
+                toast.error(error.response.data.message);
+            } else {
+                toast.error("An error occurred during logout.");
+            }
+        }
+    };
+    
 
     return (
 
@@ -115,7 +149,7 @@ const Navbar = () => {
                         </div>
                     ) : (
                         <div className='lg:flex lg:items-center lg:flex-1 lg:gap-x-4 lg:justify-end ' ref={profileRef}>
-                            <img src="https://images.unsplash.com/photo-1633332755192-727a05c4013d?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OHx8YXZhdGFyfGVufDB8fDB8fHww" alt="Profile Image" className='w-8 h-8 rounded relative cursor-pointer' onClick={handleProfile} />
+                            <img src= {user?.profile?.profilePhoto} alt="Profile Image" className='w-8 h-8 rounded relative cursor-pointer' onClick={handleProfile} />
 
                             {showProfile && (<div className='flex flex-col gap-4 border p-4 rounded bg-white shadow-md absolute top-20'>
 
@@ -125,7 +159,7 @@ const Navbar = () => {
                                     </svg>
 
                                     View Profile</Link>
-                                <Link className='flex gap-3'>
+                                <Link className='flex gap-3' onClick={logoutHandler}>
                                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="size-6">
                                         <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 9V5.25A2.25 2.25 0 0 1 10.5 3h6a2.25 2.25 0 0 1 2.25 2.25v13.5A2.25 2.25 0 0 1 16.5 21h-6a2.25 2.25 0 0 1-2.25-2.25V15m-3 0-3-3m0 0 3-3m-3 3H15" />
                                     </svg>

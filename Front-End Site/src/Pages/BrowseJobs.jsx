@@ -5,6 +5,7 @@ import Slider from "react-slick";
 import FilterCard from '../components/FilterCard';
 import JobList from '../components/JobList';
 import Job from '../components/Job';
+import { useSelector } from 'react-redux';
 
 
 const category = [
@@ -23,6 +24,7 @@ const jobArray = [1, 2, 3, 4, 5, 6, 7, 8];
 
 const BrowseJobs = () => {
 
+  const {allJobs} = useSelector(store => store.job)
 
   const settings = {
     className: "slider",
@@ -99,13 +101,13 @@ const BrowseJobs = () => {
             <FilterCard />
           </div>
           {
-            jobArray.length <= 0 ? <p> Job not found.</p> : (
+            allJobs.length <= 0 ? <p> Job not found.</p> : (
               <div className="flex flex-col flex-1  px-3 gap-4">
-                <span className='mb-3 font-semibold'>Search results ({jobArray.length})</span>
+                <span className='mb-3 font-semibold'>Search results ({allJobs.length})</span>
               <div className='grid lg:grid-cols-2 grid-cols-1 gap-6'>
                 {
-                  jobArray.map((item, index) =>
-                    <Job />
+                  allJobs.map((job) =>
+                    <Job key={job._id} job= {job} />
                   )
                 }
 
